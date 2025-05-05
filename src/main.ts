@@ -67,6 +67,6 @@ function renderSavedMeals(): void {
       mealData.link,
       mealData.ingredients
     );
-    savedMealsContainer.appendChild(mealData.render());
+    savedMealsContainer.appendChild(meal.render());
   });
 }

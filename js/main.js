@@ -55,6 +55,6 @@ function renderSavedMeals() {
         return;
     savedMeals.forEach((mealData) => {
         const meal = new Meal(mealData.id, mealData.name, mealData.category, mealData.thumbnail, mealData.instructions, mealData.link, mealData.ingredients);
-        savedMealsContainer.appendChild(mealData.render());
+        savedMealsContainer.appendChild(meal.render());
     });
 }
