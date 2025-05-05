@@ -1,4 +1,3 @@
-import { fetchRandomMeal } from "./api.js";
 export class Meal {
     id;
     name;
@@ -85,31 +84,4 @@ export class Meal {
         localStorage.setItem("favorites", JSON.stringify(favorites));
         this.updateFavoriteButton(button);
     }
-}
-export async function renderRandomMeal() {
-    const mealData = await fetchRandomMeal();
-    const meal = new Meal(mealData.id, mealData.name, mealData.category, mealData.thumbnail, mealData.instructions, mealData.link, mealData.ingredients);
-    const mealContainer = document.getElementById("meal-container");
-    if (mealContainer) {
-        mealContainer.innerHTML = ""; // Clear previous content
-        mealContainer.appendChild(meal.render());
-    }
-}
-export function renderSavedMeals() {
-    const savedMeals = JSON.parse(localStorage.getItem("favorites") || "[]");
-    const savedMealsContainer = document.getElementById("saved-meals-container");
-    if (savedMealsContainer) {
-        savedMealsContainer.innerHTML = ""; // Clear previous content
-        savedMeals.forEach((mealData) => {
-            const meal = new Meal(mealData.id, mealData.name, mealData.category, mealData.thumbnail, mealData.instructions, mealData.link, mealData.ingredients);
-            savedMealsContainer.appendChild(meal.render());
-        });
-    }
-}
-export function setActivePage(pageId) {
-    const pages = document.querySelectorAll(".page");
-    pages.forEach((page) => page.classList.add("hidden"));
-    const activePage = document.getElementById(pageId);
-    if (activePage)
-        activePage.classList.remove("hidden");
 }

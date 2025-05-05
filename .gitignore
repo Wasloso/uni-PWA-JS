@@ -1,1 +1,3 @@
 node_modules
+sprawozdanie/*
+!sprawozdanie/*.pdf

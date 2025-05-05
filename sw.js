@@ -1,10 +1,19 @@
 const cacheName = "piac-pwa-v1";
-const filesToCache = ["/", "/index.html", "/style.css", "/js/main.js", "/images/mac.jpg"];
+const baseUrl = "/pwa-js/"
+const filesToCache = [
+  baseUrl + "index.html",
+  baseUrl + "manifest.json",
+  baseUrl + "images/icons/icon-192x192.png",
+  baseUrl + "styles.css",
+  baseUrl + "js/main.js"
+]
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(cacheName).then((cache) => {
-      return cache.addAll(filesToCache);
+      return cache.addAll(filesToCache).catch(err => {
+        console.error("Caching failed:", err);
+      });
     })
   );
 });
@@ -15,7 +24,6 @@ self.addEventListener("fetch", (event) => {
       if (response) {
         return response;
       }
-
       return fetch(event.request).then((fetchResponse) => {
         if (event.request.method === "GET") {
           return caches.open(cacheName).then((cache) => {
@@ -27,7 +35,7 @@ self.addEventListener("fetch", (event) => {
       });
     }).catch(() => {
       if (event.request.mode === "navigate") {
-        return caches.match("/index.html");
+        return caches.match(baseUrl + "index.html");
       }
     })
   );
