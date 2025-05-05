@@ -1,7 +1,7 @@
 import { Meal } from "./meal.js";
 
 export async function fetchRandomMeal(): Promise<Meal> {
-  const url = "https://www.themealdb.com/api/json/v1/{apikey}/random.php";
+  const url = "https://www.themealdb.com/api/json/v1/1/random.php";
   const response = await fetch(url);
   if (!response.ok) {
     return Promise.reject("Failed to fetch random meal");

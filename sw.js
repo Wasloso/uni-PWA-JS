@@ -1,5 +1,5 @@
 const cacheName = "piac-pwa-v1";
-const baseUrl = "/pwa-js/"
+const baseUrl = "/uni-PWA-JS/"
 const filesToCache = [
   baseUrl + "index.html",
   baseUrl + "manifest.json",
