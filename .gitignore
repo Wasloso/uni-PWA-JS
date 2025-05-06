@@ -1,3 +1,5 @@
 node_modules
 sprawozdanie/*
 !sprawozdanie/*.pdf
+!sprawozdanie/*.tex
+!sprawozdanie/images
